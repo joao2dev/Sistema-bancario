@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("digite o numero da conta: ");
+        int numeroDaConta = sc.nextInt();
+        System.out.println("digite o titular da conta: ");
+        String nomeDoTitular = sc.next();
+
+        banco conta = new banco(numeroDaConta,nomeDoTitular);
+        System.out.println("Numero da conta: "+conta.getNumeroDaConta() + "\nTitular: " + conta.getNomeDoTitular());
+
+        System.out.println("deseja fazer um deposito?[s/n]: ");
+    }
+}
