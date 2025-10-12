@@ -1,34 +1,43 @@
 public class banco {
-    //Variaveis//
+    private final int numeroDaConta;
+    private String NomeDoTitular;
+    private double saldo;
 
-    private final Integer numeroDaConta;
-    private String nomeDoTitular;
-    private Double saldo;
-        //Todas as variaveis estão privadas Para nao acontecer alterções indesejadas//
-
-    public banco(int numeroDaConta ,String nomeDoTitular ){
-        this.nomeDoTitular = nomeDoTitular;
-        this.numeroDaConta = numeroDaConta;
+    public banco(int numero, String titular) {
+        this.numeroDaConta = numero;
+        this.NomeDoTitular = titular;
+        this.saldo = 0.0;
     }
 
-    public Integer getNumeroDaConta() {
-        return numeroDaConta;
-    }
-    //numeroDaConta nao tem metodo setter pois nao deve ser alterado
-
-    public String getNomeDoTitular() {
-        return nomeDoTitular;
+    public banco(int numero, String titular, double saldoInicial) {
+        this.numeroDaConta = numero;
+        this.NomeDoTitular = titular;
+        this.saldo = saldoInicial;
     }
 
-    public void setNomeDoTitular(String nomeDoTitular) {
-        this.nomeDoTitular = nomeDoTitular;
+    public void depositar(double valor) {
+        saldo += valor;
     }
 
-    public Double getSaldo() {
+
+
+    public String sacar(double valor) {
+        double taxa = 5.75;
+        saldo -= valor + taxa;
+        return "Saque realizado com sucesso. Saldo atual: R$" + saldo;
+
+    }
+
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
+    public String getNomeDoTitular() {
+        return NomeDoTitular;
     }
+
+    public int getNumeroDaConta() {
+        return numeroDaConta;
+    }
+
 }
