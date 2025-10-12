@@ -3,14 +3,50 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        //cadastro da conta
         System.out.println("digite o numero da conta: ");
         int numeroDaConta = sc.nextInt();
+
         System.out.println("digite o titular da conta: ");
         String nomeDoTitular = sc.next();
 
-        banco conta = new banco(numeroDaConta,nomeDoTitular);
-        System.out.println("Numero da conta: "+conta.getNumeroDaConta() + "\nTitular: " + conta.getNomeDoTitular());
+        // informações iniciais da conta
+        banco conta = new banco(numeroDaConta, nomeDoTitular);
+        System.out.println("Numero da conta: " + conta.getNumeroDaConta() + "\nTitular: " + conta.getNomeDoTitular());
 
-        System.out.println("deseja fazer um deposito?[s/n]: ");
+        // opção de deposito inicial
+        System.out.println("deseja fazer um deposito Incial?[s/n]: ");
+        String depositar = sc.next();
+
+        if (depositar.equals("s")) {
+            System.out.println("digite a quantia que deseja depositar: ");
+            double depositoInical = sc.nextDouble();
+
+            // Aqui usamos o mesmo objeto 'conta' e chamamos o método depositar
+            conta.depositar(depositoInical);
+
+            System.out.println("Depósito realizado com sucesso!");
+            System.out.println("Numero da conta: " + conta.getNumeroDaConta() + "\nTitular: " + conta.getNomeDoTitular()+"\nSaldo atual: R$" + conta.getSaldo());
+        }
+        else{
+            System.out.println("Numero da conta: " + conta.getNumeroDaConta() + "\nTitular: " + conta.getNomeDoTitular()+"\nSaldo atual: R$" + conta.getSaldo());
+        }
+        //Segundo deposito
+        System.out.println("digite a quantia que deseja depositar: ");
+        double quantia = sc.nextDouble();
+        conta.depositar(quantia);
+        System.out.println("Numero da conta: " + conta.getNumeroDaConta() + "\nTitular: " + conta.getNomeDoTitular()+"\nSaldo atual: R$" + conta.getSaldo());
+
+        // Saque
+        System.out.println("digite a quantia que deseja sacar: ");
+        double saque = sc.nextDouble();
+
+        //Confirmação do saque
+        System.out.println(conta.sacar(saque));
+
+        //Informações da conta pos saque
+        System.out.println("Numero da conta: " + conta.getNumeroDaConta() + "\nTitular: " + conta.getNomeDoTitular()+"\nSaldo atual: R$" + conta.getSaldo());
+
+        sc.close();
     }
 }
